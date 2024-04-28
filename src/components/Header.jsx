@@ -7,6 +7,7 @@ import Button from "./Button";
 import MenuSvg from "../assets/svg/MenuSvg";
 import { HamburgerMenu } from "./design/Header";
 import { useState } from "react";
+import { socials } from "../constants";
 
 const Header = () => {
   const pathname = useLocation();
@@ -67,14 +68,21 @@ const Header = () => {
           <HamburgerMenu />
         </nav>
 
-        <a
-          href="#signup"
-          className="button hidden mr-8 text-n-1/50 transition-colors hover:text-n-1 lg:block"
-        >
-          New account
-        </a>
-        <Button className="hidden lg:flex" href="#login">
-          Sign in
+       <ul className="flex gap-5 flex-wrap">
+          {socials.map((item) => (
+            <a
+              key={item.id}
+              href={item.url}
+              target="_blank"
+              className="flex items-center justify-center w-10 h-10 bg-n-7 rounded-full transition-colors hover:bg-n-6"
+            >
+              <img src={item.iconUrl} width={16} height={16} alt={item.title} />
+            </a>
+          ))}
+        </ul>
+        
+        <Button className="hidden lg:flex" href="https://app.ston.fi/swap">
+          Buy Token 
         </Button>
 
         <Button
